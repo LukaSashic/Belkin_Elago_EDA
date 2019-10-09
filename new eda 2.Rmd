@@ -1,0 +1,54 @@
+---
+title: "EDA new"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation and Loading
+
+Let us begin our EDA by loading the libraries we need:
+
+```{r}
+#Install if the package doesn't exist 
+#install.packages('DataExplorer') 
+library(DataExplorer)
+library(ggplot2)
+library(funModeling) 
+library(tidyverse) 
+library(Hmisc)
+```
+## Dataset
+
+The dataset that we will be using for this analysis is BelkinElagoComplete.
+
+Loading input dataset into our R session for EDA and printing first six rows:
+
+
+```{r}
+
+
+df <- read.csv(file="BelkinElagoComplete.csv", header = TRUE, sep=";")
+
+head(df, 6)
+```
+
+
+## Variables
+
+The very first thing that you’d want to do in your EDA is checking the dimension of the input dataset and the type of variables. In second step we look out for missing values.
+
+
+```{r df}
+basic_eda <- function(data)
+plot_missing(df)
+plot_histogram(df)
+plot_correlation(df, type = 'continuous')
+plot_bar(df)
+
+basic_eda(df)
+```
+
+

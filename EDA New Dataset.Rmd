@@ -1,0 +1,59 @@
+---
+title: "New dataset exploration"
+author: Sasa Lukic
+date: 09.10.2019
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load packages and data
+
+First we load the packages we need to do our analysis and than we load our data set and look at first 6 rows:
+
+```{r, error=FALSE, warning=FALSE}
+#install.packages("tidyverse")
+#install.packages("funModeling")
+#install.packages("Hmisc")
+
+library(ggplot2)
+library(funModeling) 
+library(tidyverse) 
+library(Hmisc)
+
+df <- read.csv(file="BelkinElagoComplete.csv", header = TRUE, sep=";")
+
+head(df, 6)
+
+```
+
+
+## Basic exploratory data analysis and plots
+
+Run all the functions in one-shot with the following function:
+
+
+```{r}
+basic_eda <- function(data)
+{
+  glimpse(data)
+  df_status(data)
+  freq(data) 
+  profiling_num(data)
+  plot_num(data)
+  describe(data)
+}
+
+basic_eda(df)
+```
+
+## Exploring categorical variables
+
+
+```{r}
+
+freq(df$brand)
+
+```
